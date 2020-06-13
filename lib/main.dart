@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-const s = 'dfdsfsd';
-
 void main() {
   runApp(MyApp());
 }
