@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -7,6 +8,45 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex;
+
+  //list of font awesome icons........................
+  List<IconData> _icons = [
+    FontAwesomeIcons.plane,
+    FontAwesomeIcons.bed,
+    FontAwesomeIcons.parachuteBox,
+    FontAwesomeIcons.biking,
+  ];
+
+  //icons widget ....................................
+  Widget _buildIcon(int index) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _selectedIndex = index;
+        });
+        print(_selectedIndex);
+      },
+      child: Container(
+        height: 60.0,
+        width: 60.0,
+        decoration: BoxDecoration(
+          color: _selectedIndex == index
+              ? Theme.of(context).accentColor
+              : Color(0xffe7ebee),
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        child: Icon(
+          _icons[index],
+          size: 25.0,
+          color: _selectedIndex == index
+              ? Theme.of(context).primaryColor
+              : Color(0xffb4c1c4),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +66,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+            ),
+            SizedBox(
+              height: 30.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: _icons
+                  .asMap()
+                  .entries
+                  .map(
+                    (map) => _buildIcon(map.key),
+                  )
+                  .toList(),
             ),
           ],
         ),
