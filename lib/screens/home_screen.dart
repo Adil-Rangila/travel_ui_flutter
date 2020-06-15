@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:traveluiflutter/widgets/destination_carousel.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -8,7 +9,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex;
+  int _selectedIndex = 0;
 
   //list of font awesome icons........................
   List<IconData> _icons = [
@@ -70,6 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 30.0,
             ),
+            //icons display ui.........................
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: _icons
@@ -80,6 +82,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
                   .toList(),
             ),
+            SizedBox(
+              height: 20.0,
+            ),
+            //Destination Carousel ui.....................
+            DestinationCarousel(),
           ],
         ),
       ),
