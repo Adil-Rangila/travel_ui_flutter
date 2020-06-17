@@ -11,6 +11,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+  int _currentTab = 0;
 
   //list of font awesome icons........................
   List<IconData> _icons = [
@@ -94,6 +95,41 @@ class _HomeScreenState extends State<HomeScreen> {
             HotelCarousel(),
           ],
         ),
+      ),
+      //Navigation bar for the app...........................
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentTab,
+        onTap: (int value) {
+          setState(() {
+            _currentTab = value;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.search,
+              size: 30.0,
+            ),
+            title: SizedBox.shrink(),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.local_pizza,
+              size: 30.0,
+            ),
+            title: SizedBox.shrink(),
+          ),
+          //navigation bar with image avatar................................
+          BottomNavigationBarItem(
+            icon: CircleAvatar(
+              radius: 15.0,
+              backgroundImage: NetworkImage(
+                'https://timesofindia.indiatimes.com/thumb/msid-61119804,width-1200,height-900,resizemode-4/.jpg',
+              ),
+            ),
+            title: SizedBox.shrink(),
+          ),
+        ],
       ),
     );
   }
